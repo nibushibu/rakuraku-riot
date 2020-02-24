@@ -1,0 +1,45 @@
+<tab-contents>
+  <p>
+    <button onclick="{ toggle }">Riot is ...</button>
+  </p>
+  <div if="{ state.contentVisible }" class="box">
+    🔥暴動🔥
+  </div>
+
+  <style>
+    .box {
+      background-color: #ffd1d1;
+      color: #d80000;
+      padding: 1em;
+      display: inline-block;
+      position: relative;
+      border-radius: 4px;
+
+    }
+
+    .box::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      bottom: 100%;
+      left: 0.5em;
+      position: absolute;
+      border-style: solid;
+      border-color: transparent;
+      border-width: 0 4px 8px 4px;
+      border-bottom-color: #ffd1d1;
+    }
+  </style>
+
+  <script>
+    export default {
+      state: {
+        contentVisible: false
+      },
+      toggle() {
+        this.update({ contentVisible: !this.state.contentVisible })
+      }
+    }
+  </script>
+</tab-contents>

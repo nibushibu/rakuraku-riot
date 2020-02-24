@@ -42,6 +42,7 @@ webpack などを使った開発環境に Riot.js を組み込むことももち
 - [サンプル 2: `.riot` の中に CSS を書く](#sample-2)
 - [サンプル 3: `.riot` の中に JavaScript を書く](#sample-3)
 - [サンプル 4: `if` ディレクティブを使って HTML を出し分けてみる](#sample-4)
+- [サンプル 5: 三項演算子で `class` 属性値を出し分ける](#sample-5)
 
 
 
@@ -290,4 +291,53 @@ burn(){
 
 `.riot` の HTML の部分に `if` という属性値をつけることで、HTML 要素一定の条件化だけ表示したり削除したりすることができます。
 
+👉 [動作サンプル](https://codesandbox.io/s/rakuraku-riot-sample-4-m78mp)
+
+```riot
+<toggle-comment>
+  <p>
+    <button onclick="{ toggle }">Riot is ...</button>
+  </p>
+  <div if="{ state.contentVisible }" class="box">
+    🔥暴動🔥
+  </div>
+
+  <style>
+    /* 中略 */
+  </style>
+
+  <script>
+    export default {
+      state: {
+        contentVisible: false
+      },
+      toggle() {
+        this.update({ contentVisible: !this.state.contentVisible })
+      }
+    }
+  </script>
+</toggle-comment>
 ```
+
+jQuery だと、`$('div').show()` とか `$('div').hide()` とかやる感じですかね。
+
+こういう簡単なサンプルだとあまり Riot.js の恩恵を実感できないかもしれませんが、大事なのは、見た目の HTML と、JavaScript のロジックを整理して書けるということです。
+
+作るものが複雑になってくるにつれて、jQuery で書いていると「このステータスの時は HTML のどの部分をどうする」みたいな記述がどんどん増えてしまいます。
+
+Riot.js のように、ステータスは `state` の中の変数などでシンプルに持って、HTML 側にはこの `if` ディレクティブや、後述のクラス指定の出し分けなどを使うことで、つくる UI が複雑になってきても効率的に記述できます。
+
+## <a id="sample-5">サンプル 5: 三項演算子で `class` 属性値を出し分ける</a>
+
+Riot.js は、独自の構文が非常に少ないライブラリです。
+
+`if` ディレクティブと、後ほど説明する `each` （データに合わせて HTML を量産する時に利用）しか、ほぼ独自の構文は存在しません。
+（厳密には、構文以外に、ライフサイクルメソッドなど、その他にも、もう少し覚えることはありますが、それでも他のライブラリに比べればすごく少ない）
+
+その代わり、`.riot` の中では HTML部分の `{}` の中は基本的に通常の JavaScript として評価されるので、JavaScript の書き方を工夫することで、色々なことができるようになります。
+
+よくあるのは、HTML の `class` の内容を、状況に合わせて変更したりするケースです。
+
+いくつかやり方がありますが、手っ取り早いのは 三項演算子 を使うパターンです。
+
+WIP

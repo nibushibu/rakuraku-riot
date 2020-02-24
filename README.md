@@ -1,6 +1,18 @@
 # jQuery で忙しい人のための Riot.js を最短で使うための手引き
 
-jQuery、なんだかんだ楽チンですよね。
+## 目次
+
+
+- [jQuery、なんだかんだ楽チンですよね。](#jquery)
+- [Riot.js はそんな風に思っているあなたのためのライブラリ。](#for-you)
+- [jQuery 同様、`script` で読み込むだけ！](#just-script)
+- [サンプル 1: とりあえず使ってみる](#sample-1)
+- [サンプル 2: `.riot` の中に CSS を書く](#sample-2)
+- [サンプル 3: `.riot` の中に JavaScript を書く](#sample-3)
+- [サンプル 4: `if` ディレクティブを使って HTML を出し分けてみる](#sample-4)
+- [サンプル 5: 三項演算子で `class` 属性値を出し分ける](#sample-5)
+
+## <a id="jquery">jQuery、なんだかんだ楽チンですよね。</a>
 
 jQuery は長らく Web フロントエンドの「魔法の杖」でしたが、数年前に SPA に強い次世代のライブラリやフレームワークが登場して以降は、jQuery はもう過去のモノ、みたいに言われることもあります。
 
@@ -9,7 +21,7 @@ jQuery の機能の一部は、現在では素の JavaScript でできるよう�
 
 だけど、小規模な Web 制作や単発の機能の開発であれば、プラグインも豊富で、何より `script` で読み込むだけで簡単に導入できる jQuery が生きるシーンもあると思います。
 
-## Riot.js はそんな風に思っているあなたのためのライブラリ。
+## <a id="for-you">Riot.js はそんな風に思っているあなたのためのライブラリ。</a>
 
 [Riot.js](https://riot.js.org/ja/) は、近年日本でもユーザーが急増している Vue.js などと同じく、HTML / CSS / JavaScript といった Web の見た目に関わる部分を効率的に管理・制作するための JavaScript ライブラリです。
 
@@ -17,7 +29,7 @@ jQuery の機能の一部は、現在では素の JavaScript でできるよう�
 
 そこで、Riot.js をつかってコンポーネント（パーツ・雛形）単位で Web を作るための準備を最短でやることを目標として、Riot.js の使い方などをできるだけカンタンに紹介しようとおもいます！
 
-## jQuery 同様、`script` で読み込むだけ！
+## <a id="just-script">jQuery 同様、`script` で読み込むだけ！</a>
 
 今回、この記事とサンプルの中では、webpack などの JavaScript のモジュールバンドラーは使いません。
 Node.js をインストールして、`npm install` みたいな一連の環境構築も必要ありません。
@@ -35,16 +47,6 @@ webpack などを使った開発環境に Riot.js を組み込むことももち
 これ以降のサンプルファイルは、[この Github のリポジトリ](https://github.com/nibushibu/rakuraku-riot)を参考にしてください。
 
 というわけで早速…
-
-## 目次
-
-- [サンプル 1: とりあえず使ってみる](#sample-1)
-- [サンプル 2: `.riot` の中に CSS を書く](#sample-2)
-- [サンプル 3: `.riot` の中に JavaScript を書く](#sample-3)
-- [サンプル 4: `if` ディレクティブを使って HTML を出し分けてみる](#sample-4)
-- [サンプル 5: 三項演算子で `class` 属性値を出し分ける](#sample-5)
-
-
 
 ## <a id="sample-1">サンプル 1: とりあえず使ってみる</a>
 

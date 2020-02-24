@@ -95,7 +95,7 @@ webpack などを使った開発環境に Riot.js を組み込むことももち
 </hello-riot>
 ```
 
-[実際に動いているサンプル](https://codesandbox.io/s/rakuraku-riot-sample-1-4cprl)がこちら。
+👉 [実際に動いているサンプル](https://codesandbox.io/s/rakuraku-riot-sample-1-4cprl)がこちら。
 
 `herro-riot.riot` に書いた HTML が、index.html のほうに展開（＝マウント）されてます。
 
@@ -131,7 +131,7 @@ webpack などを使った開発環境に Riot.js を組み込むことももち
 
 ただ、このままではまだ HTML の一部を外部においただけなので、では次にその中にCSSを書いていきます。
 
-[サンプルの確認はこちら](https://codesandbox.io/s/rakuraku-riot-sample-2-gp0gu)から。
+👉 [サンプルの確認はこちら](https://codesandbox.io/s/rakuraku-riot-sample-2-gp0gu)から。
 
 **sample-2/styled-text.riot**
 
@@ -169,10 +169,56 @@ styled-text .foo,
 }
 ```
 
+### スタイルをタグの中に書くかどうかは好みで決めていい。
+
+`.riot` の中にスタイルを書くことで、部品ごとに関連する HTML / CSS / JavaScript を1ファイルにまとめることができて管理も楽になりますが、人によっては、スタイルは別途 CSS に書きたいという人もいると思います。（自分）
+
+`.riot` にまとめた HTML は、マウントされれば、当然、HTML に直書きされた要素と同じように読み込まれた css のスタイルが適応されるので、無理に `.riot` にスタイルをまとめる必要はありません。
+
+好みや管理の都合に合わせて使えば良いと思います。
+
 ### `.riot` の中で SASS とか使うなら開発環境準備が必須
 
 スタイルの記述に SASS とか PostCSS（Autoprefixer） とかを使うには、プリコンパイル（.riot を事前にJavaScriptに変換しておく）が必要で、Node.js やモジュールバンドラーなどの開発環境が必要になります。
 
-自分も、実制作で使うときはそういったモジュールバンドラー含む環境を準備していますが、今回はまずかんたんに始めることを目的としているので、この記事では割愛します。
+自分も実制作で使うときはそういったモジュールバンドラー含む環境を準備していますが、今回はまずかんたんに始めることを目的としているので、この記事では割愛します。
 
 ## サンプル 3 : `.riot` の中に JavaScript を書く
+
+今度は、`.riot` の中に JavaScript を書いていきます。
+
+また、`.riot` の中では HTML の任意の場所に `{}` を使って、JavaScript の変数などを差し込んだり、`onclick` 属性などで任意の関数を実行するイベントを付加することができます。
+
+👉 [動作サンプル](https://codesandbox.io/s/rakuraku-riot-sample-3-cj0fo)
+
+```riot
+<riot-fire>
+  <p>
+    <button class="foo" onclick="{ burn }">暴動を起こす</button>
+  </p>
+  <p>{ state.fire }</p>
+
+  <script>
+    export default {
+      state: {
+        fire: '🔥'
+      },
+      // button をクリック（onclick）したときに実行する関数
+      burn(){
+
+        // state.fire という文字列に🔥を追加
+        this.state.fire += '🔥'
+
+        // このタグを更新。実際のブラウザに見えるHTMLが更新される。
+        this.update()
+      }
+    }
+  </script>
+</riot-fire>
+```
+
+jQuery だと `$('button').on('click', ()=>{ ... })` みたいなことを書くところだと思いますが、
+
+Riot.js では、このように、 HTML の中に PHP のテンプレート構文のように JavaScript の変数や処理などを埋め込むことができるので、見た目としての HTML と、JavaScript 側の処理をより完結に記述することができます。
+
+ちなみに、`export default {...}` という書式になっている部分は、JavaScript モジュールの書式で、jQuery の利用ではあまり目にしないと思いますが、ひとまずはお約束というか、こういうものだと理解して使えばOKです。

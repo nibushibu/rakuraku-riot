@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ラクラク Riot.js サンプル3</title>
+</head>
+
+<body>
+
+  <riot-fire data-riot></riot-fire>
+
+  <script type="riot" data-src="./riot-fire.riot"></script>
+  <script src="https://unpkg.com/riot@4/riot+compiler.min.js"></script>
+  <script>
+    riot.compile()
+      .then(() => {
+        riot.mount('[data-riot]')
+      })
+  </script>
+</body>
+
+</html>

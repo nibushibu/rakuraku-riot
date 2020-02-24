@@ -1,0 +1,23 @@
+<riot-fire>
+  <p>
+    <button class="foo" onclick="{ burn }">暴動を起こす</button>
+  </p>
+  <p>{ state.fire }</p>
+
+  <script>
+    export default {
+      state: {
+        fire: '🔥'
+      },
+      // button をクリック（onclick）したときに実行する関数
+      burn(){
+
+        // state.fire という文字列に🔥を追加
+        this.state.fire += '🔥'
+
+        // このタグを更新。実際のブラウザに見えるHTMLが更新される。
+        this.update()
+      }
+    }
+  </script>
+</riot-fire>

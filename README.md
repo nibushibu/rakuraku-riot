@@ -186,7 +186,7 @@ styled-text .foo,
 
 好みや管理の都合に合わせて使えば良いと思います。
 
-### `.riot` の中で SASS とか使うなら開発環境準備が必須
+### `.riot` の中で SASS とか使うなら開発環境の準備が必須
 
 スタイルの記述に SASS とか PostCSS（Autoprefixer） とかを使うには、プリコンパイル（.riot を事前にJavaScriptに変換しておく）が必要で、Node.js やモジュールバンドラーなどの開発環境が必要になります。
 
@@ -230,7 +230,7 @@ styled-text .foo,
 
 jQuery だと `$('button').on('click', ()=>{ ... })` みたいなことを書くところだと思いますが、
 
-Riot.js では、このように、 HTML の中に PHP のテンプレート構文のように JavaScript の変数や処理などを埋め込むことができるので、見た目としての HTML と、JavaScript 側の処理をより完結に記述することができます。
+Riot.js では、このように、 HTML の中に PHP のように JavaScript の変数や処理などを埋め込むことができるので、見た目としての HTML と、JavaScript 側の処理をより完結に記述することができます。
 
 ちなみに、`export default {...}` という書式になっている部分は、JavaScript モジュールの書式で、jQuery の利用ではあまり目にしないと思いますが、ひとまずはお約束というか、こういうものだと理解して使えばOKです。
 

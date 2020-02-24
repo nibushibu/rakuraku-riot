@@ -38,13 +38,13 @@ webpack などを使った開発環境に Riot.js を組み込むことももち
 
 ## 目次
 
-- [サンプル 1 : とりあえず使ってみる](#sample-1)
-- [サンプル 2 : `.riot` の中に CSS を書く](#sample-2)
-- [サンプル 3 : `.riot` の中に JavaScript を書く](#sample-3)
+- [サンプル 1: とりあえず使ってみる](#sample-1)
+- [サンプル 2: `.riot` の中に CSS を書く](#sample-2)
+- [サンプル 3: `.riot` の中に JavaScript を書く](#sample-3)
 
 <a id="sample-1"></a>
 
-## サンプル 1 : とりあえず使ってみる
+## サンプル 1: とりあえず使ってみる
 
 とりあえず Riot.js でコンポーネントを作ってみます。
 
@@ -134,7 +134,7 @@ webpack などを使った開発環境に Riot.js を組み込むことももち
 
 <a id="sample-2"></a>
 
-## サンプル 2 : `.riot` の中に CSS を書く
+## サンプル 2: `.riot` の中に CSS を書く
 
 とりあえず、サンプル 1 で、部品（コンポーネント）を `.riot` という外部ファイルにして、それを読み込むことができました。
 
@@ -194,7 +194,7 @@ styled-text .foo,
 
 <a id="sample-3"></a>
 
-## サンプル 3 : `.riot` の中に JavaScript を書く
+## サンプル 3: `.riot` の中に JavaScript を書く
 
 今度は、`.riot` の中に JavaScript を書いていきます。
 
@@ -284,3 +284,5 @@ burn(){
   this.update({ fire: this.state.fire + '🔥' })
 }
 ```
+
+参考: [公式サイト ドキュメンテーション > 状態](https://riot.js.org/ja/documentation/#%E7%8A%B6%E6%85%8B)

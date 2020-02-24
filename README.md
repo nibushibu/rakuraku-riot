@@ -28,3 +28,55 @@ Node.js をインストールして、`npm install` みたいな一連の環境�
 ※
 SASS などと組み合わせて使いたい場合などは別途そういった開発環境が必要です。
 webpack などを使った開発環境に Riot.js を組み込むことももちろん可能ですが、今回はなるべく簡単に始めることを目的としているのでそのへんは省略します。
+
+これ以降のサンプルファイルは Github にファイルをまとめていますので参考にしてみてください。
+
+https://github.com/nibushibu/rakuraku-riot
+
+## サンプル 1 : とりあえず使ってみる
+
+とりあえず Riot.js でコンポーネントを作ってみます。
+
+`sample-1` というフォルダの中身へ移動してみましょう。
+`index.html` と `hello-riot.riot` という 2 つのファイルがあります。
+中身はこんなそれぞれ以下のような感じです。
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ラクラク Riot.js サンプル1</title>
+</head>
+<body>
+
+  <!-- hello-riot というオリジナルのタグ（コンポーネント）を配置 -->
+  <hello-riot data-riot></hello-riot>
+
+  <!-- hello-riot を定義した .riot ファイルを読み込み -->
+  <script type="riot" data-src="./hello-riot.riot"></script>
+
+  <!-- Riot.js（コンパイラ含むバージョン） を CDN から読み込み -->
+  <script src="https://unpkg.com/riot@4/riot+compiler.min.js"></script>
+
+  <script>
+    // 読み込まれた .riot をコンパイル（内部で実行可能なJavaScriptに変換）
+    riot.compile()
+
+    // コンパイルが終わったら
+    .then(() => {
+
+      // data-riot という属性値を持つタグをコンポーネントと認識して展開（マウント）
+      // data-riot属性がついたタグ名と、.riot のファイル名が対応しています（この例では hello-riot）
+      riot.mount('[data-riot]')
+    })
+  </script>
+</body>
+</html>
+```
+
+```riot
+<hello-riot>
+  <p>ハロー！暴動！🔥</p>
+</hello-riot>
+```

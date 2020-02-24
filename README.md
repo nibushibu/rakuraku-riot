@@ -1,4 +1,4 @@
-# jQuery で忙しい人のための Riot.js
+# jQuery で忙しい人のための Riot.js を最短で使うための手引き
 
 jQuery、なんだかんだ楽チンですよね。
 
@@ -25,16 +25,15 @@ Node.js をインストールして、`npm install` みたいな一連の環境�
 `script` で JavaScript を読み込むだけ。 jQuery と一緒です。
 基本的に、Riot.js の単体の機能はすべて `script` で読み込むだけで使うことができます。
 
-公式のドキュメントでは **「インブラウザ・コンパイル」** と紹介されている使い方です。
+[公式のドキュメントでは **「インブラウザ・コンパイル」** と紹介](https://riot.js.org/ja/compiler/#%E3%82%A4%E3%83%B3%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB
+)されている使い方です。
 
-https://riot.js.org/ja/compiler/#%E3%82%A4%E3%83%B3%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB
 
 ※
 SASS などと組み合わせて使いたい場合などは別途そういった開発環境が必要です。
 webpack などを使った開発環境に Riot.js を組み込むことももちろん可能ですが、今回はなるべく簡単に始めることを目的としているのでそのへんは省略します。
 
-これ以降のサンプルファイルは Github にアップしています。
-https://github.com/nibushibu/rakuraku-riot
+これ以降のサンプルファイルは、[この Github のリポジトリ](https://github.com/nibushibu/rakuraku-riot)を参考にしてください。
 
 というわけで早速…
 
@@ -45,7 +44,11 @@ https://github.com/nibushibu/rakuraku-riot
 `sample-1` というフォルダの中身をご覧ください。
 `index.html` と `hello-riot.riot` という 2 つのファイルがあります。
 
-中身はこんなそれぞれ以下のような感じです。
+後者の `.riot` という拡張子のファイルは、Riot.js 独自のファイル形式ですが、その実態はほとんど通常の HTML そのままです。
+特定の部品に必要は HTML / CSS / JavaScript を、この `.riot` という1ファイルにまとめておいて、それを HTML 側から呼び出して使います。
+
+では、ファイルの中身を見てみましょう。
+
 かなりシンプルなものですが、一応それぞれ解説をコメントでつけてみました。
 
 **sample-1/index.html**
@@ -92,9 +95,7 @@ https://github.com/nibushibu/rakuraku-riot
 </hello-riot>
 ```
 
-実際に動いているサンプルを見てみましょう。
-
-https://codesandbox.io/s/rakuraku-riot-sample-1-4cprl
+[実際に動いているサンプル](https://codesandbox.io/s/rakuraku-riot-sample-1-4cprl)がこちら。
 
 `herro-riot.riot` に書いた HTML が、index.html のほうに展開（＝マウント）されてます。
 
@@ -126,9 +127,11 @@ https://codesandbox.io/s/rakuraku-riot-sample-1-4cprl
 
 ## サンプル 2 : `.riot` の中に CSS を書く
 
-とりあえず、部品（コンポーネント）を `.riot` という外部ファイルにして、それを読み込むことができました。
+とりあえず、サンプル 1 で、部品（コンポーネント）を `.riot` という外部ファイルにして、それを読み込むことができました。
 
-では次にその中にCSSを書いていきます。
+ただ、このままではまだ HTML の一部を外部においただけなので、では次にその中にCSSを書いていきます。
+
+[サンプルの確認はこちら](https://codesandbox.io/s/rakuraku-riot-sample-2-gp0gu)から。
 
 **sample-2/styled-text.riot**
 
@@ -171,3 +174,5 @@ styled-text .foo,
 スタイルの記述に SASS とか PostCSS（Autoprefixer） とかを使うには、プリコンパイル（.riot を事前にJavaScriptに変換しておく）が必要で、Node.js やモジュールバンドラーなどの開発環境が必要になります。
 
 自分も、実制作で使うときはそういったモジュールバンドラー含む環境を準備していますが、今回はまずかんたんに始めることを目的としているので、この記事では割愛します。
+
+## サンプル 3 : `.riot` の中に JavaScript を書く

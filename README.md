@@ -85,7 +85,7 @@ webpack などを使った開発環境に Riot.js を組み込むことももち
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>ラクラク Riot.js サンプル1</title>
+  <title>ラクラク Riot.js サンプル 1</title>
 </head>
 <body>
 
@@ -99,14 +99,14 @@ webpack などを使った開発環境に Riot.js を組み込むことももち
   <script src="https://unpkg.com/riot@4/riot+compiler.min.js"></script>
 
   <script>
-    // 読み込まれた .riot をコンパイル（内部で実行可能なJavaScriptに変換）
+    // 読み込まれた .riot をコンパイル（内部で実行可能な JavaScript に変換）
     riot.compile()
 
     // コンパイルが終わったら
     .then(() => {
 
       // data-riot という属性値を持つタグをコンポーネントと認識して展開（マウント）
-      // data-riot属性がついたタグ名と、.riot のファイル名が対応しています（この例では hello-riot）
+      // data-riot 属性がついたタグ名と、.riot のファイル名が対応しています（この例では hello-riot）
       riot.mount('[data-riot]')
     })
   </script>
@@ -307,7 +307,7 @@ burn(){
 
 ## <a id="sample-4">サンプル 4: `if` ディレクティブを使って HTML を出し分けてみる</a>
 
-`.riot` の HTML の部分に `if` という属性値をつけることで、HTML 要素一定の条件化だけ表示したり削除したりすることができます。
+`.riot` の HTML の部分に `if` という属性値をつけることで、HTML 要素を一定の条件化でだけ表示したり削除したりすることができます。
 
 👉 [動作サンプル](https://codesandbox.io/s/rakuraku-riot-sample-4-m78mp)
 
@@ -316,6 +316,7 @@ burn(){
   <p>
     <button onclick="{ toggle }">Riot is ...</button>
   </p>
+  <!-- 以下の div は state.contentVisible が true の時だけ表示される -->
   <div if="{ state.contentVisible }" class="box">
     🔥暴動🔥
   </div>

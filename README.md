@@ -9,15 +9,15 @@ jQuery の機能の一部は、現在では素の JavaScript でできるよう�
 
 だけど、小規模な Web 制作や単発の機能の開発であれば、プラグインも豊富で、何より `script` で読み込むだけで簡単に導入できる jQuery が生きるシーンもあると思います。
 
-## Riot.js はそんな風に思っているあなたのためのライブラリです
+## Riot.js はそんな風に思っているあなたのためのライブラリ。
 
 [Riot.js](https://riot.js.org/ja/) は、近年日本でもユーザーが急増している Vue.js などと同じく、HTML / CSS / JavaScript といった Web の見た目に関わる部分を効率的に管理・制作するための JavaScript ライブラリです。
 
 [Riot.js — Simple and elegant component-based UI library · Riot.js](https://riot.js.org/ja/)
 
-この記事では、Riot.js をつかってコンポーネント（パーツ・雛形）単位で Web を作るための準備を最短でやることを目標として、Riot.js の使い方などをさっくり紹介したいと思います。
+そこで、Riot.js をつかってコンポーネント（パーツ・雛形）単位で Web を作るための準備を最短でやることを目標として、Riot.js の使い方などをできるだけカンタンに紹介しようとおもいます！
 
-## jQuery 同様、`script` で読み込むだけ。
+## jQuery 同様、`script` で読み込むだけ！
 
 今回、この記事とサンプルの中では、webpack などの JavaScript のモジュールバンドラーは使いません。
 Node.js をインストールして、`npm install` みたいな一連の環境構築も必要ありません。
@@ -25,21 +25,30 @@ Node.js をインストールして、`npm install` みたいな一連の環境�
 `script` で JavaScript を読み込むだけ。 jQuery と一緒です。
 基本的に、Riot.js の単体の機能はすべて `script` で読み込むだけで使うことができます。
 
+公式のドキュメントでは **「インブラウザ・コンパイル」** と紹介されている使い方です。
+
+https://riot.js.org/ja/compiler/#%E3%82%A4%E3%83%B3%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB
+
 ※
 SASS などと組み合わせて使いたい場合などは別途そういった開発環境が必要です。
 webpack などを使った開発環境に Riot.js を組み込むことももちろん可能ですが、今回はなるべく簡単に始めることを目的としているのでそのへんは省略します。
 
-これ以降のサンプルファイルは Github にファイルをまとめていますので参考にしてみてください。
-
+これ以降のサンプルファイルは Github にアップしています。
 https://github.com/nibushibu/rakuraku-riot
+
+というわけで早速…
 
 ## サンプル 1 : とりあえず使ってみる
 
 とりあえず Riot.js でコンポーネントを作ってみます。
 
-`sample-1` というフォルダの中身へ移動してみましょう。
+`sample-1` というフォルダの中身をご覧ください。
 `index.html` と `hello-riot.riot` という 2 つのファイルがあります。
+
 中身はこんなそれぞれ以下のような感じです。
+かなりシンプルなものですが、一応それぞれ解説をコメントでつけてみました。
+
+**sample-1/index.html**
 
 ```html
 <!DOCTYPE html>
@@ -75,8 +84,90 @@ https://github.com/nibushibu/rakuraku-riot
 </html>
 ```
 
+**sample-1/hello-riot.riot**
+
 ```riot
 <hello-riot>
   <p>ハロー！暴動！🔥</p>
 </hello-riot>
 ```
+
+実際に動いているサンプルを見てみましょう。
+
+https://codesandbox.io/s/rakuraku-riot-sample-1-4cprl
+
+`herro-riot.riot` に書いた HTML が、index.html のほうに展開（＝マウント）されてます。
+
+…はい、どうでしょう？カンタンですよね!？ 👍
+<br>いわゆる「黒い画面」も出てきません。
+<br>jQuery と同じように、スクリプト本体を CDN とかから読み込んで、jQuery プラグインを読み込むように、`.riot` ファイルを読み込むだけです。
+
+### ローカルで確認するときの注意点
+
+さあ、ではさっそくローカルもに Github からデータをダウンロードして `sample-1/index.html` をブラウザで開いてみましょう。
+<br>**…と、ここにひとつちょっとした落とし穴があります。**
+<br>ローカルで `sample-1/index.html` をブラウザで開くと、なぜか画面は真っ白。。。
+
+#### CORS制限の都合で、httpでアクセスできるサーバーが必要。
+
+最近のブラウザにはセキュリティの安全上、クロスドメイン通信の制限があって、ローカルでデータを開いていると JavaScript が外部のファイルを読み込みにいけません。
+（つまり、この制限のせいで、ローカル環境だと Riot.js 本体のスクリプトが、.riot ファイルを読み込むことができない）
+
+なので、なにかしら動作確認には http 通信でアクセスできるサーバー環境が必要です。
+
+いくつか方法はありますが、手軽な方法だと
+
+- 手持ちの適当なサーバー環境にデータをアップして確認する
+- [MAMP](https://www.mamp.info/) などを使ってローカルのサーバー環境に置いて確認する
+
+とかかなと思います。
+
+とにかく、`file://` というアドレスから開いてもエラーになってしまうので、そこだけご注意ください。
+
+## サンプル 2 : `.riot` の中に CSS を書く
+
+とりあえず、部品（コンポーネント）を `.riot` という外部ファイルにして、それを読み込むことができました。
+
+では次にその中にCSSを書いていきます。
+
+**sample-2/styled-text.riot**
+
+```riot
+<styled-text>
+  <div class="foo">暴動をスタイリング🔥</div>
+
+  <style>
+    .foo {
+      display: inline-block;
+      background-color: #ffa9a9;
+      border-radius: 4px;
+      padding: 0.5em;
+    }
+  </style>
+</styled-text>
+```
+
+これもかんたんですね。素の HTML / CSS と一緒です。
+
+少し違うのは、`.riot` の中に書いたスタイルは、コンパイルされるときに以下のように **そのタグの中だけのスタイルに書き換えられます。**
+
+```css
+/* .riot に記述したスタイル */
+
+.foo {
+  border-radius: 4px;
+}
+
+/* コンパイル後、実際にブラウザに反映されるスタイル */
+
+styled-text .foo,
+[is="styled-text"] .foo {
+  border-radius: 4px;
+}
+```
+
+### `.riot` の中で SASS とか使うなら開発環境準備が必須
+
+スタイルの記述に SASS とか PostCSS（Autoprefixer） とかを使うには、プリコンパイル（.riot を事前にJavaScriptに変換しておく）が必要で、Node.js やモジュールバンドラーなどの開発環境が必要になります。
+
+自分も、実制作で使うときはそういったモジュールバンドラー含む環境を準備していますが、今回はまずかんたんに始めることを目的としているので、この記事では割愛します。

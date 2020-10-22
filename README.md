@@ -1,4 +1,4 @@
-# jQuery で忙しい人が Riot.js を楽をするための手引き
+# jQuery で忙しい人が Riot.js で楽をするための手引き
 
 ## 目次
 - [はじめに](#intro)
@@ -92,11 +92,11 @@ webpack などを使った開発環境に Riot.js を組み込むことももち
   <!-- hello-riot というオリジナルのタグ（コンポーネント）を配置 -->
   <hello-riot data-riot></hello-riot>
 
-  <!-- hello-riot を定義した .riot ファイルを読み込み -->
+  <!-- hello-riot を定義した .riot ファイルを読み込み -->****
   <script type="riot" data-src="./hello-riot.riot"></script>
 
   <!-- Riot.js（コンパイラ含むバージョン） を CDN から読み込み -->
-  <script src="https://unpkg.com/riot@4/riot+compiler.min.js"></script>
+  <script src="https://unpkg.com/riot@5/riot+compiler.min.js"></script>
 
   <script>
     // 読み込まれた .riot をコンパイル（内部で実行可能な JavaScript に変換）

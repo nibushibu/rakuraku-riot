@@ -1,9 +1,9 @@
-# jQuery で忙しい人のための Riot.js を最短で使うための手引き
+# jQuery で忙しい人が Riot.js を楽をするための手引き
 
 ## 目次
 - [はじめに](#intro)
 - [jQuery、なんだかんだ楽チンですよね。](#jquery)
-- [Riot.js はそんな風に思っているあなたのためのライブラリ。](#for-you)
+- [Riot.js はそんな風に思っているあなたにおすすめのライブラリ。](#for-you)
 - [jQuery 同様、`script` で読み込むだけ！](#just-script)
 - [サンプル 1: とりあえず使ってみる](#sample-1)
 - [サンプル 2: `.riot` の中に CSS を書く](#sample-2)
@@ -37,9 +37,9 @@ jQuery の機能の一部は、現在では素の JavaScript でできるよう�
 
 だけど、小規模な Web 制作や単発の機能の開発であれば、プラグインも豊富で、何より `script` で読み込むだけで簡単に導入できる jQuery が生きるシーンもあると思います。
 
-## <a id="for-you">Riot.js はそんな風に思っているあなたのためのライブラリ。</a>
+## <a id="for-you">Riot.js はそんな風に思っているあなたにおすすめのライブラリ。</a>
 
-[Riot.js](https://riot.js.org/ja/) は、近年日本でもユーザーが急増している Vue.js などと同じく、HTML / CSS / JavaScript といった Web の見た目に関わる部分を効率的に管理・制作するための JavaScript ライブラリです。
+[Riot.js](https://riot.js.org/ja/) は、HTML / CSS / JavaScript といった Web の見た目に関わる部分を効率的に管理・制作するための JavaScript ライブラリです。
 
 [Riot.js — Simple and elegant component-based UI library · Riot.js](https://riot.js.org/ja/)
 
@@ -124,7 +124,7 @@ webpack などを使った開発環境に Riot.js を組み込むことももち
 
 👉 [実際に動いているサンプル](https://codesandbox.io/s/rakuraku-riot-sample-1-4cprl)がこちら。
 
-`herro-riot.riot` に書いた HTML が、index.html のほうに展開（＝マウント）されてます。
+`hello-riot.riot` に書いた HTML が、index.html のほうに展開（＝マウント）されてます。
 
 …はい、どうでしょう？カンタンですよね!？ 👍
 <br>いわゆる「黒い画面」も出てきません。
